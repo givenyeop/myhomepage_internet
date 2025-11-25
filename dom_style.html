@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 1: DOM 스타일 변환기</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        #target {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 20px;
+            border: 2px solid #ccc;
+            margin: 20px auto;
+            width: 80%;
+            transition: all 0.3s; /* 부드러운 전환 효과 */
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #eee;
+            border: 1px solid #999;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+    <script>
+        
+        function changeColor() {
+            var obj = document.getElementById("target");
+            
+            
+            if (obj.style.color === "white") {
+                obj.style.color = ""; 
+            } else {
+                obj.style.color = "white";
+            }
+        }
+
+        // 2. 크기 변경 토글
+        function changeSize() {
+            var obj = document.getElementById("target");
+            
+            // 현재 크기가 32px이면 -> 원래대로(빈값)
+            // 아니면 -> 32px로
+            if (obj.style.fontSize === "32px") {
+                obj.style.fontSize = ""; 
+            } else {
+                obj.style.fontSize = "32px";
+            }
+        }
+
+        // 3. 배경색 변경 토글
+        function changeBackground() {
+            var obj = document.getElementById("target");
+            
+            // 배경색이 비어있지 않다면(즉, 색이 칠해져 있다면) -> 원래대로(빈값)
+            // (브라우저마다 색상 코드를 rgb로 변환하는 경우가 있어, 단순히 '비어있지 않음'을 체크하는 것이 안전합니다)
+            if (obj.style.backgroundColor !== "") {
+                obj.style.backgroundColor = ""; 
+            } else {
+                obj.style.backgroundColor = "#e413d7";
+            }
+        }
+
+        // 4. 보이기/숨기기 토글 (기존 코드 유지)
+        function toggleVisibility() {
+            var obj = document.getElementById("target");
+
+            if (obj.style.display === "none") {
+                obj.style.display = "block";
+            } else {
+                obj.style.display = "none";
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <h3>실습 1: DOM 스타일 제어하기 (토글 기능 추가)</h3>
+    <hr>
+
+    <p id="target">이 문장의 스타일을 바꿔보세요!</p>
+
+    <br>
+
+    <button onclick="changeColor()">글자색 변경</button>
+    <button onclick="changeSize()">크게 보기</button>
+    <button onclick="changeBackground()">배경 강조</button>
+    <button onclick="toggleVisibility()">숨기기/보이기</button>
+
+</body>
+
+</html>
