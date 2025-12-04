@@ -19,13 +19,21 @@ body {
   line-height: 1.6;
 }
 
+/* style.css 의 header 부분을 이것으로 교체 */
 header {
-  padding: 2rem 1rem;
+  padding: 3rem 1rem; /* 높이를 키워서 시원하게 */
   text-align: center;
-  background: var(--primary);
+  /* 핵심: 단색(background)이 아니라 그라데이션(linear-gradient)을 써야 함 */
+  background: linear-gradient(135deg, #cf09ee, #4a00e0); 
   color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* 그림자로 입체감 추가 */
 }
-header .subtitle { margin-top: .25rem; opacity: .95; }
+
+header .subtitle {
+    margin-top: 0.5rem;
+    opacity: 0.8;
+    font-weight: 300;
+}
 
 nav {
   background: var(--primary-dark);
@@ -88,4 +96,28 @@ footer {
 @media (max-width: 600px) {
   header h1 { font-size: 1.25rem; }
   .container { margin: 1rem; padding: .75rem; }
+}
+
+/* style.css 맨 아래에 복사+붙여넣기 */
+
+/* 기술 스택 뱃지 디자인 */
+.badge {
+    display: inline-block;
+    background-color: #f3f4f6; /* 아주 연한 회색 */
+    color: #333;
+    padding: 6px 12px;
+    margin: 4px;
+    border-radius: 20px; /* 알약처럼 둥글게 */
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+/* 마우스 올렸을 때 효과 */
+.badge:hover {
+    background-color: #cf09ee; /* 메인 보라색 */
+    color: white;
+    transform: translateY(-3px); /* 위로 톡 올라감 */
+    box-shadow: 0 5px 15px rgba(207, 9, 238, 0.4); /* 빛나는 효과 */
 }
