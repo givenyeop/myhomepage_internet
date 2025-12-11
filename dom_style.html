@@ -19,7 +19,7 @@
             border: 2px solid #ccc;
             margin: 20px auto;
             width: 80%;
-            transition: all 0.3s; /* 부드러운 전환 효과 */
+            transition: all 0.3s; 
         }
 
         button {
@@ -49,12 +49,12 @@
             }
         }
 
-        // 2. 크기 변경 토글
+        
         function changeSize() {
             var obj = document.getElementById("target");
             
-            // 현재 크기가 32px이면 -> 원래대로(빈값)
-            // 아니면 -> 32px로
+            
+            
             if (obj.style.fontSize === "32px") {
                 obj.style.fontSize = ""; 
             } else {
@@ -62,12 +62,11 @@
             }
         }
 
-        // 3. 배경색 변경 토글
+        
         function changeBackground() {
             var obj = document.getElementById("target");
             
-            // 배경색이 비어있지 않다면(즉, 색이 칠해져 있다면) -> 원래대로(빈값)
-            // (브라우저마다 색상 코드를 rgb로 변환하는 경우가 있어, 단순히 '비어있지 않음'을 체크하는 것이 안전합니다)
+            
             if (obj.style.backgroundColor !== "") {
                 obj.style.backgroundColor = ""; 
             } else {
@@ -75,7 +74,7 @@
             }
         }
 
-        // 4. 보이기/숨기기 토글 (기존 코드 유지)
+        
         function toggleVisibility() {
             var obj = document.getElementById("target");
 
