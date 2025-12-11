@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>실습 2: 키보드 자동차 - Cyber Drive</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background-color: #1a1a1a; /* 어두운 배경 */
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px; /* 격자무늬 배경 */
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+
+
+    .game-nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .game-nav a {
+      background: rgba(207, 9, 238, 0.2);
+      color: #cf09ee;
+      padding: 10px 20px;
+      text-decoration: none;
+      border: 1px solid #cf09ee;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .game-nav a:hover {
+      background: #cf09ee;
+      color: white;
+      box-shadow: 0 0 15px #cf09ee;
+    }
+
+
+    #car {
+      position: absolute;
+      left: 100px;
+      top: 100px;
+      width: 80px; 
+      height: 40px;
+      background: #cf09ee; 
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      line-height: 40px;
+      box-shadow: 0 0 20px #cf09ee, 0 0 40px #cf09ee; 
+      transition: top 0.1s, left 0.1s; 
+      z-index: 10;
+    }
+
+    #car::after {
+      content: '';
+      position: absolute;
+      right: -10px;
+      top: 5px;
+      width: 10px; height: 30px;
+      background: yellow;
+      border-radius: 0 50% 50% 0;
+      box-shadow: 0 0 15px yellow;
+    }
+
+
+    #info {
+      position: fixed;
+      bottom: 30px; 
+      left: 30px;
+      padding: 15px 25px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #00ffcc; 
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+    }
+    
+    h3.title {
+      color: white;
+      text-align: center;
+      margin-top: 20px;
+      text-shadow: 0 0 10px white;
+      opacity: 0.8;
+    }
+  </style>
+  <script>
+    var x = 100;
+    var y = 100;
+    var step = 10; 
+
+    window.onload = function() {
+      var car = document.getElementById("car");
+      var info = document.getElementById("info");
+
+
+      document.onkeydown = function(e) {
+
+        switch(e.keyCode) {
+          case 37: 
+            x -= step;
+            break;
+          case 38: 
+            y -= step;
+            break;
+          case 39: 
+            x += step;
+            break;
+          case 40: 
+            y += step;
+            break;
+        }
+
+
+        var maxWidth = window.innerWidth - 100; 
+        var maxHeight = window.innerHeight - 60; 
+        
+        if (x < 0) x = 0;
+        if (y < 0) y = 0;
+        if (x > maxWidth) x = maxWidth;
+        if (y > maxHeight) y = maxHeight;
+
+
+        car.style.left = x + "px";
+        car.style.top = y + "px";
+        
+        if (e.keyCode === 37) car.style.transform = "rotate(180deg)";
+        if (e.keyCode === 38) car.style.transform = "rotate(270deg)";
+        if (e.keyCode === 39) car.style.transform = "rotate(0deg)";
+        if (e.keyCode === 40) car.style.transform = "rotate(90deg)";
+
+        info.innerHTML = "SYSTEM LOG > POS: (" + x + ", " + y + ")";
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="game-nav">
+    <a href="index.html">🏠 Home으로</a>
+  </div>
+  
+  <h3 class="title">방향키(←, ↑, →, ↓)로 네온카를 운전하세요</h3>
+  
+  <div id="car">CAR</div>
+  <div id="info">SYSTEM LOG > Ready...</div>
+</body>
+</html>
